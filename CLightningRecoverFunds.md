@@ -16,8 +16,9 @@ Attempting to restore the node with a so-called 'toxic' (old) state could lead t
 
 Thus, it is **extremely important** that you do not attempt to boot up a node when there is a possiblity that some of the channel state has been lost/if the channel state is out of date. Doing so could result in the loss of all of your funds in each channel where toxic state was broadcasted.
 
-Another important point is that you can only use the method that follows **after** the channels have been (force) closed by the channel counterparty node. It’s likely that you’ll need to wait for the other node to close the channel 
-- Another possibility is to reach out to the owner of the other node and ask them to force close your shared (rekt) channel. But **only do this if you are very confident that you can trust the other node operator not to steal your sats** (which they can do by having their node broadcast a malicious state that takes all of your money and that your node cannot contest -since it’s offline). 
+Another important point is that you can only use the method that follows **after** the channels have been (force) closed by the channel counterparty node. It’s likely that you’ll need to wait for the other node to force close the channel.
+
+Another possibility is to reach out to the operator of the other node and ask them to force close your shared (rekt) channel. But **only do this if you are very confident that you can trust the other node operator not to steal your sats** (which they can do by having their node broadcast a malicious state that takes all of your money and that your node cannot contest -since it’s offline). 
 
 **It's very important at this point to leave your corrupted/dead node offline**. 
 
