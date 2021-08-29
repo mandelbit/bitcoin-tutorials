@@ -128,7 +128,7 @@ Learn more [here](https://bitcoin.stackexchange.com/a/90719).
 
 If this seems complicated, don’t worry. A manual/deterministic recovery would require you to obtain the relevant commitment from the `dumpcommitments` hsmtool method.
 
-But we're actually going to use an even easier method provided by `hsmtool`, the `guesstoremote` method, to locate the privkey associated with the address holding our funds, using the relevant count:
+But we're actually going to use an even easier method provided by `hsmtool`, the `guesstoremote` method, to locate the privkey associated with the address holding our funds, using the relevant command:
 ```
 ./tools/hsmtool  guesstoremote <P2WPKH address> <node_id> <tries> <path/to/hsm_secret>
 ```
