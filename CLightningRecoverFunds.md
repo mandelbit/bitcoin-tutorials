@@ -146,10 +146,11 @@ Are you sure that the channel used `option_static_remotekey` ?*
 If so, try to increase the number of tries. If that does not work (shouldn’t need a very high number assuming you’re not Alex Bosworth, in which case, why are you reading this guide?) then probably best checking that you have the correct `P2WPKH address` and associated `node_id`.
 
 A successful result should be of the following form:
-*bech32: […]
-pubkey hash: […]
-pubkey: […]
-privkey: […]*
+
+*bech32: […]*
+*pubkey hash: […]*
+*pubkey: […]*
+*privkey: […]*
 
 The fruit of our labour is the privkey - derived by hsmtool using the above formula.
 
