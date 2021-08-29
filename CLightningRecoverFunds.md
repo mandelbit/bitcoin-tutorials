@@ -11,7 +11,10 @@ This guide is motivated by the tragic loss of my own node ( :`( ), (corrupted fi
 # First things first
 
 If you do not have access to the latest channel backup state (or you are in any way not sure whether the channel backup you have is the most recent state), then **do not** attempt to boot your node back up. 
-Attempting to restore the node with a so-called 'toxic' (old) state could lead to your node broadcasting this toxic state to its peers, who will see this misinformation as an attack and perform a 'justic transaction', closing the channel and taking **all funds** in the channel themselves. Thus, it is **extremely important** that you do not attempt to boot up a node when there is a possiblity that some of the channel state has been lost/if the channel state is out of date. Doing so could result in the loss of all of your funds in each channel where toxic state was broadcasted.
+
+Attempting to restore the node with a so-called 'toxic' (old) state could lead to your node broadcasting this toxic state to its peers, who will see this misinformation as an attack and perform a 'justic transaction', closing the channel and taking **all funds** in the channel themselves. 
+
+Thus, it is **extremely important** that you do not attempt to boot up a node when there is a possiblity that some of the channel state has been lost/if the channel state is out of date. Doing so could result in the loss of all of your funds in each channel where toxic state was broadcasted.
 
 Another important point is that you can only use the method that follows **after** the channels have been (force) closed by the channel counterparty node. It’s likely that you’ll need to wait for the other node to close the channel 
 - Another possibility is to reach out to the owner of the other node and ask them to force close your shared (rekt) channel. But **only do this if you are very confident that you can trust the other node operator not to steal your sats** (which they can do by having their node broadcast a malicious state that takes all of your money and that your node cannot contest -since it’s offline). 
@@ -104,7 +107,8 @@ If necessary, decrypt your hsm_secret using
 
 # Retrieving info from node
 
-Go to 1ml.com and search for your node (using the alias you configured when you setup the node). Scroll down to the channel, and save the node_id of your channel counterparty somewhere. Now find the ‘Channel Point’ and paste it into a block explorer. You should see the address used to fund the channel. 
+Go to 1ml.com and search for your node (using the alias you configured when you setup the node). Scroll down to the channel, and save the node_id of your channel counterparty somewhere. Now find the ‘Channel Point’ and paste it into a block explorer. You should see the address used to fund the channel.
+
 Search/click on this address. If the channel has successfully closed, you should see a transaction from this funding address to another address that now holds your (ex)channel funds. Copy this address and save it somewhere, we’ll need it in a minute.
 
 Alternatively, you can use...
@@ -176,7 +180,9 @@ Save the WIF somewhere secure for now. Again, note that this is a **private key*
 # Recovery
 
 Once we have obtained the WIF, there are a number of ways we can recover the money.
+
 One method would be to import the WIF into a new or existing wallet e.g. by making use of Bitcoin Core’s `importprivkey` command to import the individual address and spendable funds to a Bitcoin Core wallet.dat file. Advantages of using this method include the quality and reliability of BC’s code - as reference implementation and the most reviewed code in the world of Bitcoin. One major disadvantage of just importing the WIF and leaving funds where they are is that there is a chance that in obtaining the WIF, you have exposed it/the privkey to the outer world in some way. To eliminate the risk of this potentiality, its better to spend the funds from this address (which of course can also be done shortly after the Bitcoin Core import).
+
 Another option is to use software like [Coinbin](https://coinb.in) to construct, sign and broadcast a transaction moving your bitcoin from this location to a more secure offline wallet/another lightning node/etc. Note that if you use the website directly, you are to an extent trusting that coinb.in are not going to steal your money when you sign the transaction with your WIF. This risk is mediated by the fact that coinbin is fully open source (so you can check for funny business) with considerable use and likely a lot of eyes on the code (also checking for funny business). For full paranoia mode you can build from source, or even use Bitcoin Core to construct the transaction.
 
 I went with the latter option for convenience. If you are unfamiliar with coinb.in there’s a lot of information about usage on their [blog](https://blog.coinb.in/guides).
