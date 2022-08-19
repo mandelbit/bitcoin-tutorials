@@ -133,7 +133,7 @@ But we're actually going to use an even easier method provided by `hsmtool`, the
 ./tools/hsmtool  guesstoremote <P2WPKH address> <node_id> <tries> <path/to/hsm_secret>
 ```
 
-*P2WPKH address* - this is the address holding your now on-chain funds
+*P2WPKH address* - this is the address holding your now on-chain funds (one of the two recievers of the channel closing transaction)
 *node_id* - the id of the other node involved in the channel (use lightning-cli or 1ml/equivalent to find this)
 *tries* - I believe this is the same as max_channel_dbid from the [docs](https://lightning.readthedocs.io/lightning-hsmtool.8.html?highlight=hsmtool) “is your own guess on what the channel_dbid was, or at least the maximum possible value, and is usually no greater than the number of channels that the node has ever had” - just take a guess at whatever number this channel was and multiply it by ten for safe keeping to make sure you find the right commitment
 *path/to/hsm_secret* - self-explanatory
@@ -186,6 +186,14 @@ Once we have obtained the WIF, there are a number of ways we can recover the mon
 One method would be to import the WIF into a new or existing wallet e.g. by making use of Bitcoin Core’s `importprivkey` command to import the individual address and spendable funds to a Bitcoin Core wallet.dat file. Advantages of using this method include the quality and reliability of BC’s code - as reference implementation and the most reviewed code in the world of Bitcoin. One major disadvantage of just importing the WIF and leaving funds where they are is that there is a chance that in obtaining the WIF, you have exposed it/the privkey to the outer world in some way. To eliminate the risk of this potentiality, its better to spend the funds from this address (which of course can also be done shortly after the Bitcoin Core import).
 
 Another option is to use software like [Coinbin](https://coinb.in) to construct, sign and broadcast a transaction moving your bitcoin from this location to a more secure offline wallet/another lightning node/etc. Note that if you use the website directly, you are to an extent trusting that coinb.in are not going to steal your money when you sign the transaction with your WIF. This risk is mediated by the fact that coinbin is fully open source (so you can check for funny business) with considerable use and likely a lot of eyes on the code (also checking for funny business). For full paranoia mode you can build from source, or even use Bitcoin Core to construct the transaction.
+
+Yet another option is to use [Electrum](https://electrum.org) to import private key. For this install latest verion of Electrum following installation instructions. Then, go to `file` > `new/restore wallet`, select `Import Bitcoin address or private keys`, paste your private key prepending address type used during execution of `hsm_secret` command. A few examples:
+```
+p2pkh:KxZcY47uGp9a...       	-> 1DckmggQM...
+p2wpkh-p2sh:KxZcY47uGp9a... 	-> 3NhNeZQXF...
+p2wpkh:KxZcY47uGp9a...      	-> bc1q3fjfk...
+```
+Send funds to the desired destination.
 
 I went with the latter option for convenience. If you are unfamiliar with coinb.in there’s a lot of information about usage on their [blog](https://blog.coinb.in/guides).
 
