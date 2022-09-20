@@ -12,7 +12,7 @@ This guide is motivated by the tragic loss of my own node ( :`( ), (corrupted fi
 
 If you do not have access to the latest channel backup state (or you are in any way not sure whether the channel backup you have is the most recent state), then **do not** attempt to boot your node back up. 
 
-Attempting to restore the node with a so-called 'toxic' (old) state could lead to your node broadcasting this toxic state to its peers, who will see this misinformation as an attack and perform a 'justic transaction', closing the channel and taking **all funds** in the channel themselves. 
+Attempting to restore the node with a so-called 'toxic' (old) state could lead to your node broadcasting this toxic state to its peers, who will see this misinformation as an attack and perform a 'justice transaction', closing the channel and taking **all funds** in the channel themselves. 
 
 Thus, it is **extremely important** that you do not attempt to boot up a node when there is a possiblity that some of the channel state has been lost/if the channel state is out of date. Doing so could result in the loss of all of your funds in each channel where toxic state was broadcasted.
 
