@@ -187,7 +187,7 @@ One method would be to import the WIF into a new or existing wallet e.g. by maki
 
 Another option is to use software like [Coinbin](https://coinb.in) to construct, sign and broadcast a transaction moving your bitcoin from this location to a more secure offline wallet/another lightning node/etc. Note that if you use the website directly, you are to an extent trusting that coinb.in are not going to steal your money when you sign the transaction with your WIF. This risk is mediated by the fact that coinbin is fully open source (so you can check for funny business) with considerable use and likely a lot of eyes on the code (also checking for funny business). For full paranoia mode you can build from source, or even use Bitcoin Core to construct the transaction.
 
-Yet another option is to use [Electrum](https://electrum.org) to import your private keys, and sweep your bitcoin to a destination that you control. To do this, install latest version of Electrum following installation instructions (remember to validate the integrity of your installation). Then, go to `file` > `new/restore wallet`, select `Import Bitcoin address or private keys`, paste your private key (prepending the address type used during execution of `hsm_secret` command). 
+Yet another option is to use [Electrum](https://electrum.org) to import your private keys, and sweep your bitcoin to a destination that you control. To do this, install the latest version of Electrum following installation instructions (remember to validate the integrity of your installation). Then, go to `file` > `new/restore wallet`, select `Import Bitcoin address or private keys`, paste your private key (prepending the address type used during execution of `hsm_secret` command). 
 
 The following are a few examples for different script types:
 ```
@@ -197,7 +197,7 @@ p2wpkh:KxZcY47uGp9a...      	-> bc1q3fjfk...
 ```
 Send funds to the desired destination.
 
-I went with the latter option for convenience. If you are unfamiliar with coinb.in there’s a lot of information about usage on their [blog](https://blog.coinb.in/guides).
+On this occasion, I personally went with coinb.in for convenience. If you are unfamiliar with coinb.in there’s a lot of information about usage on their [blog](https://blog.coinb.in/guides).
 
 Now you can spend your funds to a secure address and make peace knowing that you have safely recovered and secured your sats after all hell went loose and you lost everything but your hsm_secret.
 
