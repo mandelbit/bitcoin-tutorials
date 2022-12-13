@@ -133,7 +133,7 @@ But we're actually going to use an even easier method provided by `hsmtool`, the
 ./tools/hsmtool  guesstoremote <P2WPKH address> <node_id> <tries> <path/to/hsm_secret>
 ```
 
-*P2WPKH address* - this is the address holding your now on-chain funds (one of the two recievers of the channel closing transaction)
+*P2WPKH address* - this is the address holding your now on-chain funds (one of the two receivers of the channel closing transaction)
 *node_id* - the id of the other node involved in the channel (use lightning-cli or 1ml/equivalent to find this)
 *tries* - I believe this is the same as max_channel_dbid from the [docs](https://lightning.readthedocs.io/lightning-hsmtool.8.html?highlight=hsmtool) “is your own guess on what the channel_dbid was, or at least the maximum possible value, and is usually no greater than the number of channels that the node has ever had” - just take a guess at whatever number this channel was and multiply it by ten for safe keeping to make sure you find the right commitment
 *path/to/hsm_secret* - self-explanatory
